@@ -5,8 +5,9 @@ Orchestrates a complete voice interaction session:
 - Wake word ("Hello Jarvis") activates the session exactly once.
 - Jarvis speaks the activation response, then listens for commands.
 - Multiple consecutive commands are accepted within one session.
-- Each recognized utterance produces an acknowledgement (no OS commands
-  are executed yet — that is a later task).
+- Recognized utterances are routed through the offline intent
+  recognizer and allowlisted command registry; registered handlers
+  execute only after validation and any required confirmation.
 - The end phrase ("Goodbye Jarvis") ends the session politely.
 - An inactivity timeout (configurable, default 60 s) returns Jarvis to
   standby.
