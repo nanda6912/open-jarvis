@@ -11,8 +11,10 @@ and evaluation assets distributed in this repository.
 - The local SQLite command-history store records recognized transcripts,
   command types, outcomes, and timestamps. Treat this history as potentially
   sensitive user data.
-- The wake-word diagnostic ring buffer is an in-memory diagnostic facility;
-  it is not a replacement for an explicit recording workflow.
+- The wake-word diagnostic ring buffer is an in-memory diagnostic
+  facility. When `VOICEOS_KWS_PARITY_DIAGNOSTIC=1` is enabled, the parity
+  recorder holds bounded frame samples in memory and writes a JSON report
+  containing hashes, metadata and transcripts, not the raw sample arrays.
 - VoiceOS performs speech inference locally with the configured KWS, STT, and
   TTS models. The optional `SEARCH_WEB` command opens a search URL in the
   user's browser and therefore requires an internet connection.
@@ -28,6 +30,13 @@ recording utility. Its documented output is written under
 `tests/fixtures/physical/<device>/`; it is not part of continuous application
 operation. Existing files are not overwritten without `--force` and an
 interactive confirmation.
+
+Other opt-in developer diagnostics can also create WAV files, including
+`scripts/_perchannel_probe.py` and
+`scripts/kws_capture_replay_diagnostic.py`. Review each script's output
+path and retention behavior before running it on speech that should remain
+private. Keep generated captures out of commits unless they are approved
+regression fixtures.
 
 Before adding or redistributing a recording:
 
