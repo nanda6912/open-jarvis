@@ -254,8 +254,8 @@ class TestSTTEngine:
 
     def test_create_recognizer_with_real_model(self):
         model = MODELS_ROOT / "stt"
-        if not model.exists():
-            pytest.skip("STT model not installed")
+        if not model.is_dir() or not any(model.rglob("*.onnx")):
+            pytest.skip("STT ONNX model not installed")
         r = create_recognizer(model)
         assert isinstance(r, SherpaOnnxRecognizer)
         r.close()
@@ -418,8 +418,8 @@ class TestTTSEngine:
 
     def test_create_synthesizer_with_real_model(self):
         model = MODELS_ROOT / "tts"
-        if not model.exists():
-            pytest.skip("TTS model not installed")
+        if not model.is_dir() or not any(model.rglob("*.onnx")):
+            pytest.skip("TTS ONNX model not installed")
         s = create_synthesizer(model)
         assert isinstance(s, SherpaOnnxSynthesizer)
         s.close()
@@ -743,8 +743,13 @@ class TestRecordedAudio:
     def test_tts_then_stt_loopback(self):
         stt_model = MODELS_ROOT / "stt"
         tts_model = MODELS_ROOT / "tts"
-        if not stt_model.exists() or not tts_model.exists():
-            pytest.skip("models not installed")
+        if (
+            not stt_model.is_dir()
+            or not any(stt_model.rglob("*.onnx"))
+            or not tts_model.is_dir()
+            or not any(tts_model.rglob("*.onnx"))
+        ):
+            pytest.skip("STT/TTS ONNX model files not installed")
         rec = create_recognizer(stt_model)
         syn = create_synthesizer(tts_model)
         if getattr(rec, "name", "") == "null" or getattr(
