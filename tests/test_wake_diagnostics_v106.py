@@ -305,7 +305,11 @@ def test_engine_reset_on_standby_handover():
     ctl._capture = _Cap()
     ctl._engine = eng
     ctl._status = "idle"
-    ctl._detection = object()  # truthy old service
+    class _OldSvc:
+        is_running = False
+        def stop(self): pass
+
+    ctl._detection = _OldSvc()
     ctl._detection_generation = 0
     ctl._threshold = 0.25
     ctl._cooldown = 3.0
@@ -316,6 +320,7 @@ def test_engine_reset_on_standby_handover():
     ctl._on_status = None
     ctl._status_detail = ""
     ctl._restart_lock = threading.RLock()
+    ctl._retiring_detectors = []
     created = []
 
     class _Svc:
