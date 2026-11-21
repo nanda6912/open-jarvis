@@ -74,3 +74,18 @@ Or persist it in `.env`:
 ```
 VOICEOS_HOME=D:\VoiceOSData
 ```
+
+
+## Python wheel scope
+
+The setuptools configuration discovers the nested `src.*` Python
+packages so they are present in a built wheel. This is a package-layout
+check, not a standalone Windows desktop installer.
+
+The supported application setup remains the source-checkout workflow
+above. The launcher (`run.py`), PowerShell setup/run scripts, root-level
+configuration files, and separately installed offline model files are
+not bundled into a turnkey desktop distribution by the current wheel
+build. Do not advertise `pip install voiceos` as a complete desktop
+installation until those runtime assets and entry points are packaged
+and verified end to end.
