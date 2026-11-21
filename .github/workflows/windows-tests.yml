@@ -1,0 +1,119 @@
+name: Windows test suite
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  tests:
+    name: ${{ matrix.shard }}
+    runs-on: windows-latest
+    timeout-minutes: 25
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - shard: core-and-windows
+            tests: >-
+              tests/test_app_catalog.py
+              tests/test_app_identity.py
+              tests/test_application.py
+              tests/test_command_corpus.py
+              tests/test_configuration.py
+              tests/test_database.py
+              tests/test_dynamic_discovery.py
+              tests/test_intent_accuracy.py
+              tests/test_monitor_command_accuracy_v105.py
+              tests/test_monitor_command_recognition.py
+              tests/test_monitor_commands.py
+              tests/test_monitor_manager.py
+              tests/test_p0_p1_system_ops.py
+              tests/test_p2_awareness.py
+              tests/test_single_instance.py
+              tests/test_startup_manager.py
+              tests/test_windows_system_control.py
+
+          - shard: audio-and-voice
+            tests: >-
+              tests/test_audio_recovery.py
+              tests/test_detector_ownership.py
+              tests/test_dynamic_mic.py
+              tests/test_intel_array_wake_detection.py
+              tests/test_live_fixes.py
+              tests/test_live_reliability.py
+              tests/test_mic_pipeline.py
+              tests/test_post_standby_recognition.py
+              tests/test_speech_accuracy_v105.py
+              tests/test_standby_watchdog.py
+              tests/test_vad_recovery.py
+              tests/test_vad_segmentation_v105.py
+              tests/test_voice.py
+              tests/test_voice_command_accuracy.py
+              tests/test_voice_reliability.py
+
+          - shard: sessions-and-diagnostics
+            tests: >-
+              tests/test_conversation_response_latency.py
+              tests/test_quick_acknowledgement.py
+              tests/test_task4.py
+              tests/test_task5.py
+              tests/test_task6.py
+              tests/test_v108_async_rescore.py
+              tests/test_v108_task1_diagnostics.py
+              tests/test_v108_task2_kws_benchmark.py
+              tests/test_v108_task4_stt_diagnostics.py
+              tests/test_v92.py
+              tests/test_wake_cycles.py
+              tests/test_wake_diagnostics_v106.py
+              tests/test_wake_word_after_session.py
+              tests/test_wake_word_latency.py
+
+          - shard: hud-and-ui
+            tests: >-
+              tests/test_hud_v107.py
+              tests/test_hud_v108_appearance.py
+              tests/test_hud_v108_overlay.py
+              tests/test_hud_v108_topmost.py
+              tests/test_kws_parity_diagnostic_v10741.py
+              tests/test_tray.py
+              tests/test_v1071_hotfix.py
+              tests/test_v10751_production_trace.py
+              tests/test_v1075_reliability.py
+
+    env:
+      QT_QPA_PLATFORM: offscreen
+      PYTHONUTF8: "1"
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v7
+
+      - name: Set up Python 3.13
+        uses: actions/setup-python@v7
+        with:
+          python-version: "3.13"
+          cache: pip
+          cache-dependency-path: |
+            requirements.txt
+            requirements-dev.txt
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -r requirements-dev.txt
+
+      - name: Compile application and tests
+        run: python -m compileall -q src tests
+
+      - name: Run test shard
+        run: python -m pytest ${{ matrix.tests }} -q --tb=short
