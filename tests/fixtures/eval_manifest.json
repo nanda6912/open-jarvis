@@ -1,0 +1,146 @@
+[
+ {
+  "wav": "commands/open_chrome.wav",
+  "reference": "Open Chrome.",
+  "expected_intent": "OPEN_APPLICATION",
+  "expected_entities": {
+   "app_name": "Chrome"
+  }
+ },
+ {
+  "wav": "commands/open_vscode.wav",
+  "reference": "Open VS Code.",
+  "expected_intent": "OPEN_APPLICATION",
+  "expected_entities": {
+   "app_name": "code"
+  }
+ },
+ {
+  "wav": "commands/open_notepad.wav",
+  "reference": "Open Notepad.",
+  "expected_intent": "OPEN_APPLICATION",
+  "expected_entities": {
+   "app_name": "Notepad"
+  }
+ },
+ {
+  "wav": "commands/open_spotify.wav",
+  "reference": "Open Spotify.",
+  "expected_intent": "OPEN_APPLICATION",
+  "expected_entities": {
+   "app_name": "Spotify"
+  }
+ },
+ {
+  "wav": "commands/open_nonexistent.wav",
+  "reference": "Open Blorf.",
+  "expected_intent": "OPEN_APPLICATION",
+  "expected_entities": {
+   "app_name": "Blorf"
+  }
+ },
+ {
+  "wav": "commands/switch_chrome.wav",
+  "reference": "Switch to Chrome.",
+  "expected_intent": "SWITCH_TO_APPLICATION",
+  "expected_entities": {
+   "app_name": "Chrome"
+  }
+ },
+ {
+  "wav": "commands/close_chrome.wav",
+  "reference": "Close Chrome.",
+  "expected_intent": "CLOSE_APPLICATION",
+  "expected_entities": {
+   "app_name": "Chrome"
+  }
+ },
+ {
+  "wav": "commands/what_time.wav",
+  "reference": "What time is it?",
+  "expected_intent": "GET_CURRENT_TIME",
+  "expected_entities": {}
+ },
+ {
+  "wav": "commands/background_speech.wav",
+  "reference": "The weather today is quite pleasant and sunny."
+ },
+ {
+  "wav": "commands/silence.wav",
+  "reference": ""
+ },
+ {
+  "wav": "commands/set_volume_50.wav",
+  "reference": "Set volume to fifty percent.",
+  "expected_intent": "SET_VOLUME",
+  "expected_entities": {
+   "amount": 50
+  }
+ },
+ {
+  "wav": "commands/increase_volume_10.wav",
+  "reference": "Increase volume by ten percent.",
+  "expected_intent": "INCREASE_VOLUME",
+  "expected_entities": {
+   "amount": 10
+  }
+ },
+ {
+  "wav": "commands/move_chrome_monitor_two.wav",
+  "reference": "Move Chrome to monitor two.",
+  "expected_intent": "MOVE_WINDOW_TO_MONITOR",
+  "expected_entities": {
+   "target": "chrome",
+   "monitor": "two"
+  }
+ },
+ {
+  "wav": "commands/switch_notepad.wav",
+  "reference": "Switch to Notepad.",
+  "expected_intent": "SWITCH_TO_APPLICATION",
+  "expected_entities": {
+   "app_name": "Notepad"
+  }
+ },
+ {
+  "wav": "commands/phys_move_chrome_monitor_one.wav",
+  "reference": "Move Chrome to monitor one.",
+  "expected_intent": "MOVE_WINDOW_TO_MONITOR",
+  "expected_entities": {
+   "target": "chrome",
+   "monitor": "one"
+  }
+ },
+ {
+  "wav": "commands/phys_open_devin.wav",
+  "reference": "Open Devin.",
+  "expected_intent": "OPEN_APPLICATION",
+  "expected_entities": {
+   "app_name": "Devin"
+  }
+ },
+ {
+  "wav": "commands/phys_open_notepad.wav",
+  "reference": "Open Notepad.",
+  "expected_intent": "OPEN_APPLICATION",
+  "expected_entities": {
+   "app_name": "Notepad"
+  }
+ },
+ {
+  "wav": "commands/phys_set_volume_40.wav",
+  "reference": "Set volume to forty.",
+  "expected_intent": "SET_VOLUME",
+  "expected_entities": {
+   "amount": 40
+  }
+ },
+ {
+  "wav": "commands/phys_switch_whatsapp.wav",
+  "reference": "Switch to WhatsApp.",
+  "expected_intent": "SWITCH_TO_APPLICATION",
+  "expected_entities": {
+   "app_name": "WhatsApp"
+  }
+ }
+]

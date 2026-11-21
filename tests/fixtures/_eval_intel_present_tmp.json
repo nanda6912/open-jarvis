@@ -1,0 +1,155 @@
+[
+ {
+  "wav": "physical/intel/move_chrome_to_monitor_one_r1.wav",
+  "reference": "Move Chrome to monitor one.",
+  "expected_intent": "MOVE_WINDOW_TO_MONITOR",
+  "expected_entities": {
+   "target": "chrome",
+   "monitor": "one"
+  }
+ },
+ {
+  "wav": "physical/intel/move_chrome_to_monitor_one_r2.wav",
+  "reference": "Move Chrome to monitor one.",
+  "expected_intent": "MOVE_WINDOW_TO_MONITOR",
+  "expected_entities": {
+   "target": "chrome",
+   "monitor": "one"
+  }
+ },
+ {
+  "wav": "physical/intel/move_chrome_to_monitor_one_r3.wav",
+  "reference": "Move Chrome to monitor one.",
+  "expected_intent": "MOVE_WINDOW_TO_MONITOR",
+  "expected_entities": {
+   "target": "chrome",
+   "monitor": "one"
+  }
+ },
+ {
+  "wav": "physical/intel/open_devin_r1.wav",
+  "reference": "Open Devin.",
+  "expected_intent": "OPEN_APPLICATION",
+  "expected_entities": {
+   "app_name": "Devin"
+  }
+ },
+ {
+  "wav": "physical/intel/open_devin_r2.wav",
+  "reference": "Open Devin.",
+  "expected_intent": "OPEN_APPLICATION",
+  "expected_entities": {
+   "app_name": "Devin"
+  }
+ },
+ {
+  "wav": "physical/intel/open_devin_r3.wav",
+  "reference": "Open Devin.",
+  "expected_intent": "OPEN_APPLICATION",
+  "expected_entities": {
+   "app_name": "Devin"
+  }
+ },
+ {
+  "wav": "physical/intel/set_volume_to_forty_r1.wav",
+  "reference": "Set volume to forty.",
+  "expected_intent": "SET_VOLUME",
+  "expected_entities": {
+   "amount": 40
+  }
+ },
+ {
+  "wav": "physical/intel/set_volume_to_forty_r2.wav",
+  "reference": "Set volume to forty.",
+  "expected_intent": "SET_VOLUME",
+  "expected_entities": {
+   "amount": 40
+  }
+ },
+ {
+  "wav": "physical/intel/set_volume_to_forty_r3.wav",
+  "reference": "Set volume to forty.",
+  "expected_intent": "SET_VOLUME",
+  "expected_entities": {
+   "amount": 40
+  }
+ },
+ {
+  "wav": "physical/intel/switch_to_whatsapp_r1.wav",
+  "reference": "Switch to WhatsApp.",
+  "expected_intent": "SWITCH_TO_APPLICATION",
+  "expected_entities": {
+   "app_name": "WhatsApp"
+  }
+ },
+ {
+  "wav": "physical/intel/switch_to_whatsapp_r2.wav",
+  "reference": "Switch to WhatsApp.",
+  "expected_intent": "SWITCH_TO_APPLICATION",
+  "expected_entities": {
+   "app_name": "WhatsApp"
+  }
+ },
+ {
+  "wav": "physical/intel/switch_to_whatsapp_r3.wav",
+  "reference": "Switch to WhatsApp.",
+  "expected_intent": "SWITCH_TO_APPLICATION",
+  "expected_entities": {
+   "app_name": "WhatsApp"
+  }
+ },
+ {
+  "wav": "physical/intel/open_notepad_r1.wav",
+  "reference": "Open Notepad.",
+  "expected_intent": "OPEN_APPLICATION",
+  "expected_entities": {
+   "app_name": "Notepad"
+  }
+ },
+ {
+  "wav": "physical/intel/open_notepad_r2.wav",
+  "reference": "Open Notepad.",
+  "expected_intent": "OPEN_APPLICATION",
+  "expected_entities": {
+   "app_name": "Notepad"
+  }
+ },
+ {
+  "wav": "physical/intel/open_notepad_r3.wav",
+  "reference": "Open Notepad.",
+  "expected_intent": "OPEN_APPLICATION",
+  "expected_entities": {
+   "app_name": "Notepad"
+  }
+ },
+ {
+  "wav": "physical/intel/open_chrome_r1.wav",
+  "reference": "Open Chrome.",
+  "expected_intent": "OPEN_APPLICATION",
+  "expected_entities": {
+   "app_name": "Chrome"
+  }
+ },
+ {
+  "wav": "physical/intel/open_chrome_r2.wav",
+  "reference": "Open Chrome.",
+  "expected_intent": "OPEN_APPLICATION",
+  "expected_entities": {
+   "app_name": "Chrome"
+  }
+ },
+ {
+  "wav": "physical/intel/open_chrome_r3.wav",
+  "reference": "Open Chrome.",
+  "expected_intent": "OPEN_APPLICATION",
+  "expected_entities": {
+   "app_name": "Chrome"
+  }
+ },
+ {
+  "wav": "physical/intel/what_time_is_it_r1.wav",
+  "reference": "What time is it?",
+  "expected_intent": "GET_CURRENT_TIME",
+  "expected_entities": {}
+ }
+]

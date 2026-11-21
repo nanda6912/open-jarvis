@@ -1,0 +1,66 @@
+[
+ {
+  "file": "hello_jarvis.wav",
+  "text": "Hello Jarvis."
+ },
+ {
+  "file": "hey_jarvis.wav",
+  "text": "Hey Jarvis."
+ },
+ {
+  "file": "open_chrome.wav",
+  "text": "Open Chrome."
+ },
+ {
+  "file": "open_vscode.wav",
+  "text": "Open VS Code."
+ },
+ {
+  "file": "open_notepad.wav",
+  "text": "Open Notepad."
+ },
+ {
+  "file": "open_spotify.wav",
+  "text": "Open Spotify."
+ },
+ {
+  "file": "open_nonexistent.wav",
+  "text": "Open Blorf."
+ },
+ {
+  "file": "switch_chrome.wav",
+  "text": "Switch to Chrome."
+ },
+ {
+  "file": "close_chrome.wav",
+  "text": "Close Chrome."
+ },
+ {
+  "file": "what_time.wav",
+  "text": "What time is it?"
+ },
+ {
+  "file": "background_speech.wav",
+  "text": "The weather today is quite pleasant and sunny."
+ },
+ {
+  "file": "silence.wav",
+  "text": ""
+ },
+ {
+  "file": "set_volume_50.wav",
+  "text": "Set volume to fifty percent."
+ },
+ {
+  "file": "increase_volume_10.wav",
+  "text": "Increase volume by ten percent."
+ },
+ {
+  "file": "move_chrome_monitor_two.wav",
+  "text": "Move Chrome to monitor two."
+ },
+ {
+  "file": "switch_notepad.wav",
+  "text": "Switch to Notepad."
+ }
+]

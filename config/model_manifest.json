@@ -1,0 +1,52 @@
+{
+  "version": 1,
+  "description": "Offline speech model manifest for VoiceOS. Models are NOT distributed with the repository; install them manually under the runtime models directory (see docs/MODEL_SETUP.md). Paths may be overridden with VOICEOS_KWS_MODEL_DIR / VOICEOS_STT_MODEL_DIR / VOICEOS_TTS_MODEL_DIR.",
+  "models": [
+    {
+      "id": "kws-zipformer-gigaspeech-3.3M",
+      "family": "kws",
+      "engine": "sherpa-onnx KeywordSpotter",
+      "default_dir": "models/kws",
+      "env_var": "VOICEOS_KWS_MODEL_DIR",
+      "upstream": "sherpa-onnx release assets (kws zipformer gigaspeech 3.3M, 2024-01-01)",
+      "required": [
+        {"glob": "encoder*.onnx", "note": "encoder model (int8 preferred)"},
+        {"glob": "decoder*.onnx", "note": "decoder model (int8 preferred)"},
+        {"glob": "joiner*.onnx", "note": "joiner model (int8 preferred)"},
+        {"glob": "tokens.txt", "note": "BPE tokens"},
+        {"glob": "keywords*.txt", "note": "keyword list; keywords_jarvis.txt preferred, keywords.txt fallback"}
+      ],
+      "notes": "Files may live in a model subdirectory; the engine searches recursively. keywords_jarvis.txt contains the BPE-tokenized 'hello jarvis' variants."
+    },
+    {
+      "id": "stt-moonshine-base-en-int8",
+      "family": "stt",
+      "engine": "sherpa-onnx Moonshine recognizer",
+      "default_dir": "models/stt",
+      "env_var": "VOICEOS_STT_MODEL_DIR",
+      "upstream": "sherpa-onnx release assets (moonshine-base-en-int8); archive also kept locally as moonshine.tar.bz2",
+      "required": [
+        {"glob": "preprocess.onnx", "note": "feature preprocessor"},
+        {"glob": "encode*.onnx", "note": "encoder (int8 preferred)"},
+        {"glob": "uncached_decode*.onnx", "note": "uncached decoder (int8 preferred)"},
+        {"glob": "cached_decode*.onnx", "note": "cached decoder (int8 preferred)"},
+        {"glob": "tokens.txt", "note": "token table"}
+      ],
+      "notes": "Model type 'moonshine' is auto-detected from preprocess.onnx + encode*.onnx. A sherpa-onnx-moonshine-tiny-en-int8 fallback directory may also be present; the engine picks the best candidate."
+    },
+    {
+      "id": "tts-vits-piper-en_US-lessac-medium-int8",
+      "family": "tts",
+      "engine": "sherpa-onnx OfflineTts (VITS/Piper)",
+      "default_dir": "models/tts",
+      "env_var": "VOICEOS_TTS_MODEL_DIR",
+      "upstream": "sherpa-onnx release assets (vits-piper en_US lessac medium int8); archive also kept locally as lessac-int8.tar.bz2",
+      "required": [
+        {"glob": "*.onnx", "note": "VITS model (int8 preferred)"},
+        {"glob": "tokens.txt", "note": "token table inside the model directory"},
+        {"glob": "lexicon*.txt", "note": "lexicon-en-us.txt or lexicon.txt, in model dir or parent"}
+      ],
+      "notes": "espeak-ng-data must ship inside the model directory for phonemization."
+    }
+  ]
+}

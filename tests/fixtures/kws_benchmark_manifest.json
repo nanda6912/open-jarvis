@@ -1,0 +1,65 @@
+[
+  {
+    "id": "pos_hello_jarvis",
+    "wav": "commands/hello_jarvis.wav",
+    "label": "positive",
+    "reference": "Hello Jarvis.",
+    "wake_end_seconds": 0.9,
+    "notes": "Existing command fixture; wake phrase only."
+  },
+  {
+    "id": "pos_hey_jarvis_padded",
+    "wav": "commands/hey_jarvis.wav",
+    "label": "positive",
+    "reference": "Hey Jarvis.",
+    "wake_end_seconds": 1.0,
+    "transforms": {
+      "pad_before_seconds": 1.0,
+      "pad_after_seconds": 1.0,
+      "gain": 0.9
+    },
+    "notes": "Same phrase shifted later by silence padding."
+  },
+  {
+    "id": "pos_live_hello_fast_quiet",
+    "wav": "live/_hello_jarvis.wav",
+    "label": "positive",
+    "reference": "Hello Jarvis.",
+    "wake_end_seconds": 1.7,
+    "transforms": {
+      "pad_before_seconds": 0.5,
+      "pad_after_seconds": 0.5,
+      "speed": 1.1,
+      "gain": 0.8
+    },
+    "notes": "Real-voice fixture with speed and level transform."
+  },
+  {
+    "id": "neg_background_speech",
+    "wav": "commands/background_speech.wav",
+    "label": "negative",
+    "reference": "The weather today is quite pleasant and sunny.",
+    "notes": "Ordinary speech, no wake phrase."
+  },
+  {
+    "id": "neg_open_chrome",
+    "wav": "commands/open_chrome.wav",
+    "label": "negative",
+    "reference": "Open Chrome.",
+    "notes": "Command speech without wake phrase."
+  },
+  {
+    "id": "neg_silence",
+    "wav": "commands/silence.wav",
+    "label": "negative",
+    "reference": "",
+    "notes": "Digital silence."
+  },
+  {
+    "id": "neg_noise_only",
+    "wav": "live/_test_noiseonly.wav",
+    "label": "negative",
+    "reference": "",
+    "notes": "Background-noise-only fixture."
+  }
+]

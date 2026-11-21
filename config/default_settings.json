@@ -1,0 +1,61 @@
+{
+  "application": {
+    "name": "VoiceOS",
+    "assistant_name": "Jarvis",
+    "version": "1.0.0"
+  },
+  "voice": {
+    "wake_word": "Hello Jarvis",
+    "activation_response": "At your service",
+    "exit_phrase": "Goodbye Jarvis",
+    "session_timeout_seconds": 60,
+    "listening_enabled": true,
+    "microphone_enabled": true,
+    "wake_word_enabled": true,
+    "wake_word_threshold": 0.25,
+    "stt_enabled": true,
+    "stt_engine": "auto",
+    "stt_model_dir": "",
+    "stt_num_threads": 2,
+    "stt_speech_threshold": 0.01,
+    "tts_enabled": true,
+    "tts_engine": "sherpa-onnx-vits",
+    "tts_model_dir": "",
+    "tts_num_threads": 2,
+    "tts_speed": 1.0,
+    "ack_mode": "full",
+    "quick_ack_response": "Yes."
+  },
+  "startup": {
+    "auto_start": true,
+    "start_minimized": true
+  },
+  "interface": {
+    "theme": "dark",
+    "show_notifications": true
+  },
+  "hud": {
+    "enabled": true,
+    "monitor": "dell",
+    "size": 320,
+    "position": "",
+    "position_screen": "",
+    "locked": true,
+    "always_on_top": true,
+    "fullscreen": true,
+    "fps": 30,
+    "appearance": {
+      "preset": "balanced",
+      "brightness": 65,
+      "glow": 55,
+      "opacity": 95,
+      "ring": 75,
+      "particle": 60,
+      "waveform": 70,
+      "speed": 100
+    }
+  },
+  "storage": {
+    "database_name": "voiceos.db"
+  }
+}
