@@ -32,12 +32,17 @@ tests/
 ## GitHub Actions
 
 `.github/workflows/windows-tests.yml` runs on Windows with Python 3.13.
-It splits the modules into four independent jobs:
+It splits the modules into four independent test shards:
 
 - Core, command routing and Windows controllers.
 - Audio capture, microphone and voice pipeline.
 - Session lifecycle and diagnostics.
 - HUD, Qt and tray tests.
+
+A separate packaging-layout job builds a wheel and verifies that the
+nested Python modules are included. It does not claim that the wheel is
+a complete Windows desktop installer; see
+[PORTABLE_INSTALLATION.md](PORTABLE_INSTALLATION.md).
 
 The shards run in separate processes. This is intentional: the release
 readiness investigation recorded native Qt/offscreen-GL access
