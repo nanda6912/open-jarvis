@@ -44,11 +44,12 @@ nested Python modules are included. It does not claim that the wheel is
 a complete Windows desktop installer; see
 [PORTABLE_INSTALLATION.md](PORTABLE_INSTALLATION.md).
 
-The shards run in separate processes. This is intentional: the release
-readiness investigation recorded native Qt/offscreen-GL access
-violations after long single-process test runs. A passing shard is not
-physical hardware validation; CI does not prove microphone, speaker,
-GPU, monitor or real Windows power behavior.
+The shards run in separate processes. In addition, each HUD/Qt module
+runs in its own pytest process to limit cross-module Qt state leakage;
+the release-readiness investigation recorded native Qt/offscreen-GL
+access violations after long single-process test runs. A passing shard
+is not physical hardware validation; CI does not prove microphone,
+speaker, GPU, monitor or real Windows power behavior.
 
 The workflow's first run is the authority for current CI status. Do not
 describe CI as passing until GitHub reports all four jobs green.
