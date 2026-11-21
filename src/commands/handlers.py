@@ -1,9 +1,11 @@
-"""Built-in command handlers for VoiceOS.
+"""Shared/default command-handler primitives for VoiceOS.
 
-Only safe informational intents execute real work in this task
-(current time/date). All other intents are registered with validating
-handlers marked ``executable=False`` so they are recognized, entity-
-checked and acknowledged — but never executed until later tasks.
+This module provides baseline handlers, shared validation helpers and
+the known-folder allowlist used by the specialized runtime handler
+factories. It is not a complete description of which application
+commands execute: the production registry also composes handlers from
+the application, file, monitor, status, system and system-control
+modules.
 """
 
 from __future__ import annotations
