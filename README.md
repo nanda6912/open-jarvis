@@ -2,11 +2,13 @@
 
 ## Overview
 
-VoiceOS is a Windows desktop voice assistant ("Jarvis") that runs
-entirely offline. It listens for the wake phrase **"Hello Jarvis"**,
-transcribes spoken commands with a local speech model, routes them to a
-safe allowlisted command registry, and answers by synthesized voice —
-all without cloud services, API keys or an internet connection.
+VoiceOS is a Windows desktop voice assistant ("Jarvis") with an
+offline-first speech pipeline. It listens for the wake phrase
+**"Hello Jarvis"**, transcribes spoken commands with a local speech
+model, routes them to a safe allowlisted command registry, and answers
+by synthesized voice. KWS, STT, TTS and intent recognition run locally;
+the optional `SEARCH_WEB` command opens an external search in the
+default browser and requires an internet connection.
 
 A holographic HUD (OpenGL orb rendered by PySide6) visualizes the
 assistant's state on a secondary display, and a system-tray interface
@@ -46,8 +48,14 @@ provides control without a main window.
 - **Holographic HUD** — compact always-on-top OpenGL orb (~30 FPS
   target) with state, level, transcript and session visualization;
   multi-monitor placement with fallback.
-- **Privacy** — raw microphone audio is never persisted; only command
-  transcripts and outcomes are stored in the local history table.
+- **Audio handling** — normal runtime processing keeps microphone
+  frames in memory and does not automatically save raw audio. Explicit
+  evaluation scripts can record WAV fixtures.
+- **Local history** — recognized transcripts, command types and outcomes
+  are stored in the local history database.
+- **Data handling** — the repository contains recorded WAV test fixtures;
+  review [docs/DATA_PRIVACY.md](docs/DATA_PRIVACY.md) before adding or
+  redistributing recordings.
 
 ## Architecture
 
@@ -307,8 +315,11 @@ manual/hardware validation scripts (`test_v*.py`,
 
 ## Security and Privacy
 
-- **Offline only** — no network calls in normal operation; no cloud
-  speech services, no API keys.
+- **Local speech processing** — KWS, STT, TTS and intent recognition
+  run locally without cloud speech services or API keys.
+- **Optional online search** — the explicit `SEARCH_WEB` command opens
+  Google, YouTube or Wikipedia in the default browser and requires an
+  internet connection.
 - **Audio never persisted** — microphone audio stays in memory;
   only transcripts, command types and outcomes reach `command_history`.
 - **Allowlisted commands** — handlers must be registered *and* declare
@@ -324,6 +335,10 @@ manual/hardware validation scripts (`test_v*.py`,
   processes; the lock auto-releases on exit/crash.
 
 ## Known Limitations
+
+For details about local history, explicit evaluation recordings and the
+WAV fixtures distributed with the repository, see
+[docs/DATA_PRIVACY.md](docs/DATA_PRIVACY.md).
 
 - Windows-only; no Linux/macOS support.
 - English-only speech models.
