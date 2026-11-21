@@ -115,7 +115,29 @@ jobs:
       - name: Compile application and tests
         run: python -m compileall -q src tests
 
+      - name: Run HUD and Qt modules in isolated processes
+        if: matrix.shard == 'hud-and-ui'
+        shell: pwsh
+        run: |
+          $moduleText = @'
+          ${{ matrix.tests }}
+          '@
+          $modules = $moduleText -split '\s+' | Where-Object { $_ }
+          $failed = @()
+          foreach ($module in $modules) {
+            Write-Host "Running isolated UI module: $module"
+            & python -m pytest $module -q --tb=short
+            if ($LASTEXITCODE -ne 0) {
+              $failed += $module
+            }
+          }
+          if ($failed.Count -gt 0) {
+            Write-Host "::error::Failed UI modules: $($failed -join ', ')"
+            exit 1
+          }
+
       - name: Run test shard
+        if: matrix.shard != 'hud-and-ui'
         run: python -m pytest ${{ matrix.tests }} -q --tb=short
 
 
