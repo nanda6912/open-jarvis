@@ -50,7 +50,8 @@ provides control without a main window.
   multi-monitor placement with fallback.
 - **Audio handling** — normal runtime processing keeps microphone
   frames in memory and does not automatically save raw audio. Explicit
-  evaluation scripts can record WAV fixtures.
+  evaluation and diagnostic utilities can create WAV captures; see
+  [docs/DATA_PRIVACY.md](docs/DATA_PRIVACY.md).
 - **Local history** — recognized transcripts, command types and outcomes
   are stored in the local history database.
 - **Data handling** — the repository contains recorded WAV test fixtures;
